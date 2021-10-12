@@ -25,7 +25,7 @@
 
 
 </head>
-<%@ include file="header.jsp" %>
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -33,8 +33,13 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Drinkuj ze smakiem!</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        <a href="/login" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Logowanie </a>
+    </div>
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <a href="/register" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Rejestracja </a>
     </div>
 
     <!-- Content Row -->
@@ -64,6 +69,9 @@
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <a href="/description" class="text-xs font-weight-bold text-primary text-uppercase mb-1">Dowiedz się więcej
+                            </a>
                         <div class="col mr-2">
                             </div>
     <img src="/theme/img/RUM.jpg" width="250" height="150" alt="RUM">
@@ -99,7 +107,7 @@
                     <div class="chart-area">
                         <canvas id="myAreaChart"></canvas>
                         <p>Aplikacja stworzona do katalogowania najlepszych drinków z całego świata. Zapisuj własne
-                            drinki i wyszukuj przepisy z całego świata.</p>
+                            drinki i wyszukuj przepisy.</p>
                     </div>
                 </div>
             </div>
@@ -110,11 +118,11 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Drink miesiąca</h6>
+                    <h6><a href="/monthDrink" class="m-0 font-weight-bold text-primary">Drink miesiąca</a></h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <img src="/theme/img/pornstar.jpg" width="150" height="250" alt="pornstar">
+                    <img src="/theme/img/pornstar.jpg" width="200" height="250" alt="pornstar">
                     <h2>PORNSTAR MARTINI</h2>
                     <div class="chart-pie pt-4 pb-2">
                         <canvas id="myPieChart"></canvas>
@@ -124,7 +132,7 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-    <%@ include file="footer.jsp" %>
+
 
     </body>
 </html>

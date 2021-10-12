@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Panel Administracyjny</title>
+    <title>DrinkList</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,8 +32,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Lista drinków</h1>
-        <a href="<c:url value="/user/add"/>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-            <i class="fas fa-download fa-sm text-white-50"></i> Dodaj użytkownika</a>
     </div>
     <div class="card shadow mb-4">
         <%--        <div class="card-header py-3">
@@ -56,7 +54,7 @@
                             <td>
                                 <a href='<c:url value="remove?toRemoveId=${drink.id}"/>'>Usuń</a>
                                 <a href='<c:url value="edit?idToEdit=${drink.id}"/>'>Edit</a>
-                                <a href='<c:url value="/user/show?id=${user.id}"/>'>Pokaż</a>
+                                <a href='<c:url value="recipe?idToFind=${drink.id}"/>'>Pokaż</a>
                             </td>
                         </tr>
                     </c:forEach>

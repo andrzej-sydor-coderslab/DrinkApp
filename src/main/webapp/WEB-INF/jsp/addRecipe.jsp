@@ -37,6 +37,8 @@
     <form:errors path="preparationTime"/><br/>
     Koszt drinka: <form:input path="priceLevel"/><br/>
     <form:errors path="priceLevel"/><br/>
+    Opis przygotowania <form:input path="description"/> <br />
+    <form:errors path="description"/><br/>
     <input type="submit">
 
 </form:form>

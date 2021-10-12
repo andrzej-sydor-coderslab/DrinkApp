@@ -14,6 +14,7 @@ import java.util.List;
 @Transactional
 public class AdminDao {
 
+
     @PersistenceContext
     EntityManager entityManager;
 
@@ -46,5 +47,6 @@ public class AdminDao {
     public static String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
+
 }
 

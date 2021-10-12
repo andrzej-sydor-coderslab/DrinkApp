@@ -11,8 +11,26 @@ public class Drink {
     private long id;
     private String name;
     private String ingredients;
+    private String description;
     private int preparationTime;
     private String priceLevel;
+
+    public Drink(long id, String name, String ingredients, String description, int preparationTime, String priceLevel) {
+        this.id = id;
+        this.name = name;
+        this.ingredients = ingredients;
+        this.description = description;
+        this.preparationTime = preparationTime;
+        this.priceLevel = priceLevel;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Drink() {
     }
@@ -71,6 +89,7 @@ public class Drink {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", ingredients='" + ingredients + '\'' +
+                ", description='" + description + '\'' +
                 ", preparationTime=" + preparationTime +
                 ", priceLevel='" + priceLevel + '\'' +
                 '}';

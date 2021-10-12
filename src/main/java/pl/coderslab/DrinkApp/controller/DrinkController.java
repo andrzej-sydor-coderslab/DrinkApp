@@ -27,6 +27,22 @@ public class DrinkController {
         return "list";
     }
 
+    @GetMapping("/description")
+    public String showDescription() {
+        return "description";
+    }
+
+    @GetMapping("/monthDrink")
+    public String drinkOfMonth() {
+        return "drinkOfMonth";
+    }
+
+    @GetMapping("/recipe")
+    public String showRecipe(Model model, int idToFind) {
+        model.addAttribute("drink", drinkDao.findById(idToFind));
+        return "drinkRecipe";
+    }
+
     @GetMapping("/home")
     public String initAddFom() {
         return "/home";
