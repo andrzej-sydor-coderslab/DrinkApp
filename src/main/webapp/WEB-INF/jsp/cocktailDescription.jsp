@@ -28,7 +28,6 @@
 <h2>Opis przygotowania<h2></h2><br>
     ${cocktail.drinkName}
 
-
     <%@ include file="footer.jsp" %>
 </body>
 </html>

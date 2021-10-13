@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 import pl.coderslab.DrinkApp.dao.CocktailClient;
 import pl.coderslab.DrinkApp.entity.dto.CocktailDto;
 import pl.coderslab.DrinkApp.service.CocktailService;
@@ -39,7 +38,7 @@ public class CocktailController {
 
     @PostMapping("/findRecipe")
     public String showThisRecipe(String drink, Model model){
-        CocktailDto cocktailDto = cocktailClient.getWeatherForCity(drink);
+        CocktailDto cocktailDto = cocktailClient.getDrinkByName(drink);
         model.addAttribute("cocktail", cocktailDto);
         return "cocktailDescription";
     }

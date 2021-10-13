@@ -23,7 +23,7 @@ public class SoftDrinkController {
     @GetMapping("/softList")
     public String showAll(Model model) {
         model.addAttribute("allSofts", softDrinkDao.findAll());
-        return "softs";
+        return "softList";
     }
 
 

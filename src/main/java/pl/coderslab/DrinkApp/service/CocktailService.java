@@ -19,7 +19,7 @@ private final CocktailClient cocktailClient;
     }
 
     public CocktailDto getDrink(String drink){
-        return cocktailClient.getWeatherForCity(drink);
+        return cocktailClient.getDrinkByName(drink);
     }
 
     public String getRandomCocktail(){

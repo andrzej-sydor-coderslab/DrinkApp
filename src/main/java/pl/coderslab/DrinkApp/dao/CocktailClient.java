@@ -18,11 +18,12 @@ public class CocktailClient {
         ,String.class, drink);
     }
 
-    public CocktailDto getWeatherForCity(String drink){
+    public CocktailDto getDrinkByName(String drink){
         OpenCocktailCocktailDto openCocktailCocktailDto = restTemplate.getForObject(cocktails
                 + "search.php?s={drink}", OpenCocktailCocktailDto.class, drink);
         OpenCocktailMainDto[] array = openCocktailCocktailDto.getDrinks();
         OpenCocktailMainDto firstElement = array[0];
+
         return CocktailDto.builder()
                 .drinkName(firstElement.toString())
                 .build();
