@@ -7,8 +7,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.coderslab.DrinkApp.dao.CocktailClient;
 import pl.coderslab.DrinkApp.dao.DrinkDao;
 import pl.coderslab.DrinkApp.entity.Drink;
+import pl.coderslab.DrinkApp.entity.dto.CocktailDto;
+import pl.coderslab.DrinkApp.service.CocktailService;
 
 import javax.validation.Valid;
 
@@ -16,9 +19,12 @@ import javax.validation.Valid;
 public class DrinkController {
 
     private final DrinkDao drinkDao;
+    private final CocktailClient cocktailClient;
 
-    public DrinkController(DrinkDao drinkDao) {
+    public DrinkController(DrinkDao drinkDao, CocktailClient cocktailClient) {
         this.drinkDao = drinkDao;
+        this.cocktailClient = cocktailClient;
+
     }
 
     @GetMapping("/list")
@@ -42,6 +48,7 @@ public class DrinkController {
         model.addAttribute("drink", drinkDao.findById(idToFind));
         return "drinkRecipe";
     }
+
 
     @GetMapping("/home")
     public String initAddFom() {
