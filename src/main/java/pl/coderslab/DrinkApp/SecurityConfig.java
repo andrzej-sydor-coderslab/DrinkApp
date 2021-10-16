@@ -1,4 +1,4 @@
-package pl.coderslab.DrinkApp;
+/*package pl.coderslab.DrinkApp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,8 +18,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin()
                 .loginPage("/login");
     }
-
-
-
-
-}
+}*//**/
