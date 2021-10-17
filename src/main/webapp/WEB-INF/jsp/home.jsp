@@ -42,6 +42,11 @@
                 class="fas fa-download fa-sm text-white-50"></i> Rejestracja </a>
     </div>
 
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <a href="/dashboard" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Panel użytkownika </a>
+    </div>
+
     <!-- Content Row -->
     <div class="row">
 
@@ -124,9 +129,9 @@
                 <div class="card-body">
                     <img src="/theme/img/pornstar.jpg" width="200" height="250" alt="pornstar">
                     <h2>PORNSTAR MARTINI</h2>
-                    <div class="chart-pie pt-4 pb-2">
+                    <%--<div class="chart-pie pt-4 pb-2">
                         <canvas id="myPieChart"></canvas>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>

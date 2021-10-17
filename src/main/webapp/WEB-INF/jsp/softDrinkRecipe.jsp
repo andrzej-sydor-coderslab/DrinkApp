@@ -20,7 +20,7 @@
 
 
 </head>
-    <title>Przepis na drink</title>
+<title>Przepis na drink</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -32,17 +32,17 @@
         <th>Koszt drinka</th>
     </tr>
     <tr>
-        <td> ${drink.name} </td>
-        <td>${drink.ingredients}</td>
-        <td>${drink.preparationTime}</td>
-        <td>${drink.priceLevel}</td>
+        <td> ${soft.name} </td>
+        <td>${soft.ingredients}</td>
+        <td>${soft.preparationTime}</td>
+        <td>${soft.priceLevel}</td>
     </tr>
 </table>
 <br>
 <h2>Opis przygotowania<h2></h2><br>
-    ${drink.description}
+    ${soft.description}
 
 
-<%@ include file="footer.jsp" %>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

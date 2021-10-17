@@ -31,13 +31,13 @@
 
     Nazwa: <form:input path="name" /> <br />
     <form:errors path="name"/><br/>
-    Składniki: <form:input path="ingredients"/> <br />
+    Składniki: <form:textarea path="ingredients"/> <br />
     <form:errors path="ingredients"/><br/>
-    Czas przygotowania: <form:input path="preparationTime"/> <br />
+    Czas przygotowania (minuty): <form:select path="preparationTime" items="${preparationTime}"/> <br />
     <form:errors path="preparationTime"/><br/>
-    Koszt drinka: <form:input path="priceLevel"/><br/>
+    Koszt drinka: <form:select path="priceLevel" items="${drinkCosts}"/><br/>
     <form:errors path="priceLevel"/><br/>
-    Opis przygotowania <form:input path="description"/> <br />
+    Opis przygotowania <form:textarea path="description"/> <br />
     <form:errors path="description"/><br/>
     <input type="submit">
 

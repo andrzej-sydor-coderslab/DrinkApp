@@ -12,10 +12,10 @@ public class Drink {
     private String name;
     private String ingredients;
     private String description;
-    private int preparationTime;
+    private String preparationTime;
     private String priceLevel;
 
-    public Drink(long id, String name, String ingredients, String description, int preparationTime, String priceLevel) {
+    public Drink(long id, String name, String ingredients, String description, String preparationTime, String priceLevel) {
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
@@ -23,6 +23,7 @@ public class Drink {
         this.preparationTime = preparationTime;
         this.priceLevel = priceLevel;
     }
+
 
     public String getDescription() {
         return description;
@@ -35,13 +36,6 @@ public class Drink {
     public Drink() {
     }
 
-    public Drink(long id, String name, String ingredients, int preparationTime, String priceLevel) {
-        this.id = id;
-        this.name = name;
-        this.ingredients = ingredients;
-        this.preparationTime = preparationTime;
-        this.priceLevel = priceLevel;
-    }
 
     public long getId() {
         return id;
@@ -67,11 +61,11 @@ public class Drink {
         this.ingredients = ingredients;
     }
 
-    public int getPreparationTime() {
+    public String getPreparationTime() {
         return preparationTime;
     }
 
-    public void setPreparationTime(int preparationTime) {
+    public void setPreparationTime(String preparationTime) {
         this.preparationTime = preparationTime;
     }
 

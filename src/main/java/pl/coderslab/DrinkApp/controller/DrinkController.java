@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.DrinkApp.dao.CocktailClient;
@@ -14,12 +15,27 @@ import pl.coderslab.DrinkApp.entity.dto.CocktailDto;
 import pl.coderslab.DrinkApp.service.CocktailService;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class DrinkController {
 
     private final DrinkDao drinkDao;
     private final CocktailClient cocktailClient;
+
+    @ModelAttribute("drinkCosts")
+    public List<String> checkOptions(){
+        String[]a = new String[]{"niski", "przeciętny", "duży"};
+        return Arrays.asList(a);
+    }
+    @ModelAttribute("preparationTime")
+    public List<String> checkTime(){
+        String[]a = new String[]{"1-3 minuty", "5-7 minut", "powyżej 10 minut"};
+        return Arrays.asList(a);
+    }
+
+
 
     public DrinkController(DrinkDao drinkDao, CocktailClient cocktailClient) {
         this.drinkDao = drinkDao;
@@ -67,7 +83,7 @@ public class DrinkController {
             return "/add";
         }
         drinkDao.createDrink(drink);
-        return "redirect:/home";
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/edit")

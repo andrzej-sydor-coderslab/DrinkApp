@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "softs")
 public class SoftDrink {
 
-    public SoftDrink(long id, String name, String ingredients, String description, int preparationTime, String priceLevel) {
+    public SoftDrink(long id, String name, String ingredients, String description, String preparationTime, String priceLevel) {
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
@@ -21,7 +21,7 @@ public class SoftDrink {
     private String name;
     private String ingredients;
     private String description;
-    private int preparationTime;
+    private String preparationTime;
     private String priceLevel;
 
     public SoftDrink() {
@@ -60,11 +60,11 @@ public class SoftDrink {
         this.description = description;
     }
 
-    public int getPreparationTime() {
+    public String getPreparationTime() {
         return preparationTime;
     }
 
-    public void setPreparationTime(int preparationTime) {
+    public void setPreparationTime(String preparationTime) {
         this.preparationTime = preparationTime;
     }
 
