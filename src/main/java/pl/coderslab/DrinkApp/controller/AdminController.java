@@ -34,20 +34,20 @@ public class AdminController {
         return "redirect:/home";
     }
 
-    @GetMapping("/login")
-    public String initLogin(Model model) {
-        model.addAttribute("admin", new Admin());
-        return "/login";
-    }
+//    @GetMapping("/login")
+//    public String initLogin(Model model) {
+//        model.addAttribute("admin", new Admin());
+//        return "/login";
+//    }
 
-    @PostMapping("/login")
-    public String persistLogin(@Valid Admin admin, BindingResult result) {
-        if (result.hasErrors()) {
-            return "/login";
-        }
-        adminDao.createAdmin(admin);
-        return "redirect:/dashboard";
-    }
+//    @PostMapping("/login")
+//    public String persistLogin(@Valid Admin admin, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return "/login";
+//        }
+////        adminDao.createAdmin(admin);
+//        return "redirect:/dashboard";
+//    }
 
     @GetMapping("/dashboard")
     public String showAll() {

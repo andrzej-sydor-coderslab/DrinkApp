@@ -43,9 +43,9 @@
                     <div class="form-group">
                         <input type="password" class="form-control" id="password" name="password" placeholder="podaj hasło">
                     </div>
-                    <div class="form-group">
+                    <%--<div class="form-group">
                         <input type="password" class="form-control" id="repassword" name="password" placeholder="powtórz hasło">
-                    </div>
+                    </div>--%>
                     <button class="btn btn-color rounded-0" type="submit">Wyślij</button>
                 </form>
             </div>
