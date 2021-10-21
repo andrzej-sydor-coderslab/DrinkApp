@@ -3,12 +3,12 @@ package pl.coderslab.DrinkApp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.DrinkApp.dao.AdminDao;
 import pl.coderslab.DrinkApp.entity.Admin;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class AdminController {
@@ -34,24 +34,25 @@ public class AdminController {
         return "redirect:/home";
     }
 
-//    @GetMapping("/login")
-//    public String initLogin(Model model) {
-//        model.addAttribute("admin", new Admin());
-//        return "/login";
-//    }
+/*  @GetMapping("/login")
+    public String initLogin() {
+        return "/login";
+ }
 
-//    @PostMapping("/login")
-//    public String persistLogin(@Valid Admin admin, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "/login";
-//        }
-////        adminDao.createAdmin(admin);
-//        return "redirect:/dashboard";
-//    }
+    @PostMapping("/login")
+    public String persistLogin(@Valid Admin admin, BindingResult result) {
+        if (result.hasErrors()) {
+            return "/login";
+        }
+        adminDao.createAdmin(admin);
+        return "redirect:/dashboard";
+  }*/
 
     @GetMapping("/dashboard")
     public String showAll() {
         return "dashboard";
     }
+
+
 
 }

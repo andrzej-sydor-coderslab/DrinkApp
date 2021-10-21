@@ -1,9 +1,11 @@
 package pl.coderslab.DrinkApp.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "admins")
+//@Table(name = "admins")
 public class Admin {
 
     @Id
@@ -13,16 +15,16 @@ public class Admin {
     private String lastName;
     private String email;
     private String password;
-    private int superadmin;
-    private int enable;
+
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    private Set<Drink> drinks = new HashSet<>();
 
     public Admin(String firstName, String lastName,
-                 String email, String password, int superadmin) {
+                 String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.superadmin = superadmin;
     }
 
     public Admin() {
@@ -69,21 +71,6 @@ public class Admin {
         this.password = password;
     }
 
-    public int getSuperadmin() {
-        return superadmin;
-    }
-
-    public void setSuperadmin(int superadmin) {
-        this.superadmin = superadmin;
-    }
-
-    public int getEnable() {
-        return enable;
-    }
-
-    public void setEnable(int enable) {
-        this.enable = enable;
-    }
 
     @Override
     public String toString() {
@@ -93,8 +80,6 @@ public class Admin {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", superadmin=" + superadmin +
-                ", enable=" + enable +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package pl.coderslab.DrinkApp.controller;
 
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.DrinkApp.dao.CocktailClient;
 import pl.coderslab.DrinkApp.dao.DrinkDao;
 import pl.coderslab.DrinkApp.entity.Drink;
-import pl.coderslab.DrinkApp.entity.dto.CocktailDto;
-import pl.coderslab.DrinkApp.service.CocktailService;
+import pl.coderslab.DrinkApp.service.DrinksManagementsService;
 
 import javax.validation.Valid;
 import java.util.Arrays;
@@ -22,6 +22,7 @@ import java.util.List;
 public class DrinkController {
 
     private final DrinkDao drinkDao;
+    private final DrinksManagementsService drinksManagementsService;
     private final CocktailClient cocktailClient;
 
     @ModelAttribute("drinkCosts")
@@ -37,15 +38,20 @@ public class DrinkController {
 
 
 
-    public DrinkController(DrinkDao drinkDao, CocktailClient cocktailClient) {
+    public DrinkController(DrinkDao drinkDao, DrinksManagementsService drinksManagementsService, CocktailClient cocktailClient) {
         this.drinkDao = drinkDao;
+        this.drinksManagementsService = drinksManagementsService;
         this.cocktailClient = cocktailClient;
 
     }
 
     @GetMapping("/list")
     public String showAll(Model model) {
-        model.addAttribute("allDrinks", drinkDao.findAll());
+        try {
+            model.addAttribute("allDrinks", drinksManagementsService.findAllForUser());
+        } catch (Exception e) {
+            e.printStackTrace(); // TODO handle
+        }
         return "list";
     }
 
@@ -61,7 +67,11 @@ public class DrinkController {
 
     @GetMapping("/recipe")
     public String showRecipe(Model model, int idToFind) {
-        model.addAttribute("drink", drinkDao.findById(idToFind));
+        try {
+            model.addAttribute("drink", drinksManagementsService.findDrinkForUserById(idToFind));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "drinkRecipe";
     }
 
@@ -77,12 +87,16 @@ public class DrinkController {
         return "/addRecipe";
     }
 
-    @PostMapping("/add")
-    public String persistDrink(@Valid Drink drink, BindingResult result) {
+    @PostMapping("/add")// walidacja przy pomocy validationgroup https://www.javacodegeeks.com/2014/08/validation-groups-in-spring-mvc.html
+    public String persistDrink(Drink drink, BindingResult result) {
         if (result.hasErrors()) {
             return "/add";
         }
-        drinkDao.createDrink(drink);
+        try {
+            drinksManagementsService.saveDrinkForCurrentUser(drink);
+        } catch (Exception e) {
+            e.printStackTrace();//TODO handle
+        }
         return "redirect:/dashboard";
     }
 
