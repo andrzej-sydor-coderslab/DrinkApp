@@ -20,6 +20,12 @@ public class DrinkController {
     private final DrinkDao drinkDao;
     private final DrinksManagementsService drinksManagementsService;
 
+    public DrinkController(DrinkDao drinkDao, DrinksManagementsService drinksManagementsService) {
+        this.drinkDao = drinkDao;
+        this.drinksManagementsService = drinksManagementsService;
+
+    }
+
     @ModelAttribute("drinkCosts")
     public List<String> checkOptions(){
         String[]a = new String[]{"niski", "przeciętny", "duży"};
@@ -31,11 +37,7 @@ public class DrinkController {
         return Arrays.asList(a);
     }
 
-    public DrinkController(DrinkDao drinkDao, DrinksManagementsService drinksManagementsService) {
-        this.drinkDao = drinkDao;
-        this.drinksManagementsService = drinksManagementsService;
 
-    }
 
     @GetMapping("/list")
     public String showAll(Model model) {

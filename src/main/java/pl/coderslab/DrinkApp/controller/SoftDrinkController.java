@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.DrinkApp.dao.SoftDrinkDao;
 import pl.coderslab.DrinkApp.entity.SoftDrink;
-
-import javax.validation.Valid;
+import pl.coderslab.DrinkApp.service.DrinksManagementsService;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,9 +17,11 @@ import java.util.List;
 public class SoftDrinkController {
 
     private final SoftDrinkDao softDrinkDao;
+    private final DrinksManagementsService drinksManagementsService;
 
-    public SoftDrinkController(SoftDrinkDao softDrinkDao) {
+    public SoftDrinkController(SoftDrinkDao softDrinkDao, DrinksManagementsService drinksManagementsService) {
         this.softDrinkDao = softDrinkDao;
+        this.drinksManagementsService = drinksManagementsService;
     }
 
     @ModelAttribute("drinkCosts")
@@ -37,7 +38,11 @@ public class SoftDrinkController {
 
     @GetMapping("/softList")
     public String showAll(Model model) {
-        model.addAttribute("allSofts", softDrinkDao.findAll());
+        try {
+            model.addAttribute("allSofts", drinksManagementsService.findAllSoftsForUser());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "softList";
     }
 
@@ -49,11 +54,15 @@ public class SoftDrinkController {
     }
 
     @PostMapping("/addSoft")
-    public String persistDrink(@Valid SoftDrink softDrink, BindingResult result) {
+    public String persistDrink(SoftDrink softDrink, BindingResult result) {
         if (result.hasErrors()) {
             return "/addSoft";
         }
-        softDrinkDao.createSoftDrink(softDrink);
+        try {
+            drinksManagementsService.saveSoftForCurrentUser(softDrink);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/dashboard";
     }
 
