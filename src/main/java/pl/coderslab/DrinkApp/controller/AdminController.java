@@ -32,9 +32,4 @@ public class AdminController {
         adminDao.createAdmin(admin);
         return "redirect:/home";
     }
-
-    @GetMapping("/dashboard")
-    public String dashboard() {
-        return "dashboard";
-    }
 }

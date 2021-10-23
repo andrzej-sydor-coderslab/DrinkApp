@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.DrinkApp.dao.SoftDrinkDao;
 import pl.coderslab.DrinkApp.entity.SoftDrink;
 import pl.coderslab.DrinkApp.service.DrinksManagementsService;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,25 +26,15 @@ public class SoftDrinkController {
     }
 
     @ModelAttribute("drinkCosts")
-    public List<String> checkOptions(){
-        String[]a = new String[]{"niski", "przeciętny", "duży"};
+    public List<String> checkOptions() {
+        String[] a = new String[]{"niski", "przeciętny", "duży"};
         return Arrays.asList(a);
     }
 
     @ModelAttribute("preparationTime")
-    public List<String> checkTime(){
-        String[]a = new String[]{"1-3 minuty", "5-7 minut", "powyżej 10 minut"};
+    public List<String> checkTime() {
+        String[] a = new String[]{"1-3 minuty", "5-7 minut", "powyżej 10 minut"};
         return Arrays.asList(a);
-    }
-
-    @GetMapping("/softList")
-    public String showAll(Model model) {
-        try {
-            model.addAttribute("allSofts", drinksManagementsService.findAllSoftsForUser());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "softList";
     }
 
 
@@ -78,12 +69,6 @@ public class SoftDrinkController {
         return "redirect:/list";
     }
 
-    @GetMapping("/softRecipe")
-    public String showRecipe(Model model, int idToFind) {
-        model.addAttribute("soft", softDrinkDao.findById(idToFind));
-        return "softDrinkRecipe";
-    }
-
     @GetMapping("/removeSoft")
     public String prepareRemove(@RequestParam int toRemoveId, Model model) {
         model.addAttribute("soft", softDrinkDao.findById(toRemoveId));
@@ -97,5 +82,25 @@ public class SoftDrinkController {
             softDrinkDao.delete(softDrink);
         }
         return "redirect:/softList";
+    }
+
+    @GetMapping("/softList")
+    public String showAll(Model model) {
+        try {
+            model.addAttribute("allSofts", drinksManagementsService.findAllSoftsForUser());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "softList";
+    }
+
+    @GetMapping("/softRecipe")
+    public String showRecipe(Model model, int idToFind) {
+        try {
+            model.addAttribute("drink", drinksManagementsService.findSoftForUserById(idToFind));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "drinkRecipe";
     }
 }

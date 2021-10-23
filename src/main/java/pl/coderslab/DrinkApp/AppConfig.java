@@ -51,7 +51,6 @@ public class AppConfig {
     @Bean(name = "conversionService")
     public ConversionService getConversionService() {
         ConversionServiceFactoryBean factory = new ConversionServiceFactoryBean();
-/*        factory.setConverters(getConverters());*/
         factory.afterPropertiesSet();
         return factory.getObject();
     }

@@ -9,8 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
+
+//Klasa zawierająca metody CRUD do zastosowania na obiekcie Admin, czyli zarejestrowanego użytkownika aplikacji.
 
 @Repository
 @Transactional
@@ -28,10 +29,6 @@ public class AdminDao {
         entityManager.persist(admin);
     }
 
-    public Admin readAdmin(long id) {
-        return entityManager.find(Admin.class, id);
-    }
-
     public void update(Admin admin) {
         entityManager.merge(admin);
     }
@@ -41,14 +38,6 @@ public class AdminDao {
                 admin : entityManager.merge(admin));
     }
 
-    public List<Admin> findAll() {
-        Query query = entityManager.createQuery("SELECT a from Admin a");
-        return query.getResultList();
-    }
-
-    public Optional<Admin> findById(long id) {
-        return Optional.ofNullable(entityManager.find(Admin.class, id));
-    }
     public Optional<Admin> findByEmail(String email) {
 
         Query query = entityManager.createQuery(String.format("Select a from Admin a where a.email='%s'", email));

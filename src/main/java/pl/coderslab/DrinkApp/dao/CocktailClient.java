@@ -6,6 +6,7 @@ import pl.coderslab.DrinkApp.entity.dto.OpenCocktailMainDto;
 import pl.coderslab.DrinkApp.entity.dto.OpenCocktailCocktailDto;
 import pl.coderslab.DrinkApp.entity.dto.CocktailDto;
 
+//Klasa zawierająca metody połączenia z zewnętrznym API, służącym do wyszukiwania drinków.
 
 @Component
 public class CocktailClient {

@@ -25,6 +25,4 @@ private final CocktailClient cocktailClient;
     public String getRandomCocktail(){
         return cocktailClient.getRandomCocktail();
     }
-
-
 }

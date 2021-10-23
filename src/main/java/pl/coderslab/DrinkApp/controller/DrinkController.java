@@ -27,53 +27,17 @@ public class DrinkController {
     }
 
     @ModelAttribute("drinkCosts")
-    public List<String> checkOptions(){
-        String[]a = new String[]{"niski", "przeciętny", "duży"};
+    public List<String> checkOptions() {
+        String[] a = new String[]{"niski", "przeciętny", "duży"};
         return Arrays.asList(a);
     }
+
     @ModelAttribute("preparationTime")
-    public List<String> checkTime(){
-        String[]a = new String[]{"1-3 minuty", "5-7 minut", "powyżej 10 minut"};
+    public List<String> checkTime() {
+        String[] a = new String[]{"1-3 minuty", "5-7 minut", "powyżej 10 minut"};
         return Arrays.asList(a);
     }
 
-
-
-    @GetMapping("/list")
-    public String showAll(Model model) {
-        try {
-            model.addAttribute("allDrinks", drinksManagementsService.findAllForUser());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "list";
-    }
-
-    @GetMapping("/description")
-    public String showDescription() {
-        return "description";
-    }
-
-    @GetMapping("/monthDrink")
-    public String drinkOfMonth() {
-        return "drinkOfMonth";
-    }
-
-    @GetMapping("/recipe")
-    public String showRecipe(Model model, int idToFind) {
-        try {
-            model.addAttribute("drink", drinksManagementsService.findDrinkForUserById(idToFind));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "drinkRecipe";
-    }
-
-
-    @GetMapping("/home")
-    public String initAddFom() {
-        return "/home";
-    }
 
     @GetMapping("/add")
     public String initAddFom(Model model) {
@@ -81,7 +45,8 @@ public class DrinkController {
         return "/addRecipe";
     }
 
-    @PostMapping("/add")// walidacja przy pomocy validationgroup https://www.javacodegeeks.com/2014/08/validation-groups-in-spring-mvc.html
+    @PostMapping("/add")
+// walidacja przy pomocy validationgroup https://www.javacodegeeks.com/2014/08/validation-groups-in-spring-mvc.html
     public String persistDrink(Drink drink, BindingResult result) {
         if (result.hasErrors()) {
             return "/add";
@@ -119,5 +84,25 @@ public class DrinkController {
             drinkDao.delete(drink);
         }
         return "redirect:/list";
+    }
+
+    @GetMapping("/list")
+    public String showAll(Model model) {
+        try {
+            model.addAttribute("allDrinks", drinksManagementsService.findAllForUser());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "list";
+    }
+
+    @GetMapping("/recipe")
+    public String showRecipe(Model model, int idToFind) {
+        try {
+            model.addAttribute("drink", drinksManagementsService.findDrinkForUserById(idToFind));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "drinkRecipe";
     }
 }
