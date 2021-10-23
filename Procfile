@@ -1,1 +1,0 @@
-web: java -jar target/DrinkApp-0.0.1.jar

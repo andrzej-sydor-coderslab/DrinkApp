@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
                 .antMatchers("/home","/findRecipe").permitAll()
                 .antMatchers("/dashboard").authenticated()
                 .and().formLogin().defaultSuccessUrl("/dashboard",true)
