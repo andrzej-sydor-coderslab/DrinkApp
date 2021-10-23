@@ -20,8 +20,7 @@
     <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
 
 
-</head>
-<%@ include file="header.jsp" %>
+
 
 <section class="dashboard-section">
     <div class="container pt-4 pb-4">
@@ -52,4 +51,3 @@
         </div>
     </div>
 </section>
-<%@ include file="footer.jsp" %>
