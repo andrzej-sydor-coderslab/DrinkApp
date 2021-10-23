@@ -4,15 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.DrinkApp.dao.CocktailClient;
 import pl.coderslab.DrinkApp.entity.dto.CocktailDto;
 import pl.coderslab.DrinkApp.service.CocktailService;
 
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor

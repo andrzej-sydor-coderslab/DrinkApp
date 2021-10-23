@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import pl.coderslab.DrinkApp.entity.Admin;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

@@ -8,7 +8,6 @@ import pl.coderslab.DrinkApp.dao.AdminDao;
 import pl.coderslab.DrinkApp.entity.Admin;
 
 import javax.validation.Valid;
-import java.security.Principal;
 
 @Controller
 public class AdminController {
@@ -20,13 +19,13 @@ public class AdminController {
     }
 
     @GetMapping("/register")
-    public String initAddFom(Model model) {
+    public String registerForm(Model model) {
         model.addAttribute("admin", new Admin());
         return "/registration";
     }
 
     @PostMapping("/register")
-    public String persistDrink(@Valid Admin admin, BindingResult result) {
+    public String registerFormPost(@Valid Admin admin, BindingResult result) {
         if (result.hasErrors()) {
             return "/registration";
         }
@@ -34,25 +33,8 @@ public class AdminController {
         return "redirect:/home";
     }
 
-/*  @GetMapping("/login")
-    public String initLogin() {
-        return "/login";
- }
-
-    @PostMapping("/login")
-    public String persistLogin(@Valid Admin admin, BindingResult result) {
-        if (result.hasErrors()) {
-            return "/login";
-        }
-        adminDao.createAdmin(admin);
-        return "redirect:/dashboard";
-  }*/
-
     @GetMapping("/dashboard")
-    public String showAll() {
+    public String dashboard() {
         return "dashboard";
     }
-
-
-
 }

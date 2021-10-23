@@ -1,7 +1,5 @@
 package pl.coderslab.DrinkApp.controller;
 
-
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,12 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.coderslab.DrinkApp.dao.CocktailClient;
 import pl.coderslab.DrinkApp.dao.DrinkDao;
 import pl.coderslab.DrinkApp.entity.Drink;
 import pl.coderslab.DrinkApp.service.DrinksManagementsService;
 
-import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,7 +19,6 @@ public class DrinkController {
 
     private final DrinkDao drinkDao;
     private final DrinksManagementsService drinksManagementsService;
-    private final CocktailClient cocktailClient;
 
     @ModelAttribute("drinkCosts")
     public List<String> checkOptions(){
@@ -36,12 +31,9 @@ public class DrinkController {
         return Arrays.asList(a);
     }
 
-
-
-    public DrinkController(DrinkDao drinkDao, DrinksManagementsService drinksManagementsService, CocktailClient cocktailClient) {
+    public DrinkController(DrinkDao drinkDao, DrinksManagementsService drinksManagementsService) {
         this.drinkDao = drinkDao;
         this.drinksManagementsService = drinksManagementsService;
-        this.cocktailClient = cocktailClient;
 
     }
 
@@ -50,7 +42,7 @@ public class DrinkController {
         try {
             model.addAttribute("allDrinks", drinksManagementsService.findAllForUser());
         } catch (Exception e) {
-            e.printStackTrace(); // TODO handle
+            e.printStackTrace();
         }
         return "list";
     }
@@ -95,7 +87,7 @@ public class DrinkController {
         try {
             drinksManagementsService.saveDrinkForCurrentUser(drink);
         } catch (Exception e) {
-            e.printStackTrace();//TODO handle
+            e.printStackTrace();
         }
         return "redirect:/dashboard";
     }
@@ -126,5 +118,4 @@ public class DrinkController {
         }
         return "redirect:/list";
     }
-
 }

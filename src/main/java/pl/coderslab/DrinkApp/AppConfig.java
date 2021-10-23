@@ -47,11 +47,6 @@ public class AppConfig {
         return lvfb;
     }
 
-/*    public Set<Converter> getConverters() {
-        Set<Converter> converters = new HashSet<>();
-        converters.add(new AuthorConverter());
-        return converters;
-    }*/
 
     @Bean(name = "conversionService")
     public ConversionService getConversionService() {
